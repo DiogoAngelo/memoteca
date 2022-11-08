@@ -8,12 +8,23 @@ import { Thoughts } from 'src/app/shared/models/thoughts.model';
 })
 export class ListThoughtsComponent implements OnInit {
   public thoughtsList: Thoughts[] = [];
+  public currentPage: number = 1;
+  public hasMoreItems: boolean = true;
 
   constructor(private clientService: ClientService) {}
 
   public ngOnInit(): void {
-    this.clientService.list().subscribe((data) => {
+    this.clientService.list(this.currentPage).subscribe((data) => {
       this.thoughtsList = data;
+    });
+  }
+
+  public loadMoreItems() {
+    this.clientService.list(++this.currentPage).subscribe((data) => {
+      this.thoughtsList.push(...data);
+      if (!data.length) {
+        this.hasMoreItems = false;
+      }
     });
   }
 }

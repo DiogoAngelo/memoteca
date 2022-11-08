@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Thoughts } from '../shared/models/thoughts.model';
 
@@ -15,8 +15,14 @@ export class ClientService {
     return this.httpClient.post<Thoughts>(this.API, thoughts);
   }
 
-  public list(): Observable<Thoughts[]> {
-    return this.httpClient.get<Thoughts[]>(this.API);
+  public list(page: number): Observable<Thoughts[]> {
+    const totalItemsPage = 9;
+
+    let params = new HttpParams()
+      .set('_page', page)
+      .set('_limit', totalItemsPage);
+
+    return this.httpClient.get<Thoughts[]>(this.API, { params });
   }
 
   public delete(id: string): Observable<Thoughts> {

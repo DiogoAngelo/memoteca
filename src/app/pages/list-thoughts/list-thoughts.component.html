@@ -10,6 +10,11 @@
     </div>
   </div>
 </section>
+<base-load-page-button
+  [hasMoreItems]="hasMoreItems"
+  (click)="loadMoreItems()"
+
+></base-load-page-button>
 <ng-template #semPensamentos>
   <div class="ff-inter sem-pensamentos">
     <p>Ainda não há pensamentos cadastrados!</p>
