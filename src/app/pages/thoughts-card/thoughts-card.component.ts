@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Thoughts } from 'src/app/shared/thoughts.model';
+import { Thoughts } from 'src/app/shared/models/thoughts.model';
 
 @Component({
   selector: 'app-thoughts-card',

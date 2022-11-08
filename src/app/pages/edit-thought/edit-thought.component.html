@@ -1,36 +1,35 @@
 <section *ngIf="thought" class="container editar-pensamentos ff-inter">
   <header class="header">
-    <h2>Adicione um pensamento novo:</h2>
+    <h2>Edite o pensamento:</h2>
   </header>
-  <form>
+  <form  [formGroup]="editForm" >
     <label for="pensamento">Pensamento</label>
     <input
+      formControlName="content"
       type="textarea"
       class="input"
       id="pensamento"
-      name="pensamento"
       placeholder="Digite o pensamento"
-      [(ngModel)]="thought.content"
     >
+    <base-form-validator [form]="editForm.controls.content" ></base-form-validator>
     <label for="autoria">Autoria ou fonte</label>
     <input
+      formControlName="author"
       type="text"
       class="input"
       id="autoria"
-      name="autoria"
       placeholder="Digite a autoria ou fonte"
-      [(ngModel)]="thought.author"
     >
+    <base-form-validator [form]="editForm.controls.author" ></base-form-validator>
     <label for="modelo">Selecione o modelo do card:</label>
     <div class="container-radio">
       <div class="radio-modelo">
         <label for="modelo1">
           <input
+          formControlName="template"
             type="radio"
             id="modelo1"
             value="modelo1"
-            name="modelo-card"
-            [(ngModel)]="thought.template"
           >
           <div class="custom-radio">
             <span></span>
@@ -48,11 +47,10 @@
       <div class="radio-modelo">
         <label for="modelo2">
           <input
+            formControlName="template"
             type="radio"
             id="modelo2"
             value="modelo2"
-            name="modelo-card"
-            [(ngModel)]="thought.template"
           >
           <div class="custom-radio">
             <span></span>
@@ -70,11 +68,10 @@
       <div class="radio-modelo">
         <label for="modelo3">
           <input
+          formControlName="template"
             type="radio"
             id="modelo3"
             value="modelo3"
-            name="modelo-card"
-            [(ngModel)]="thought.template"
           >
           <div class="custom-radio">
             <span></span>
@@ -90,7 +87,7 @@
       </div>
     </div>
     <div class="acoes">
-      <button  class="botao" (click)="edit()" >Salvar</button>
+      <button [class.botao__desabilitado]="editForm.invalid" class="botao" (click)="edit()" >Salvar</button>
       <button  class="botao" (click)="cancel()" >Cancelar</button>
     </div>
   </form>

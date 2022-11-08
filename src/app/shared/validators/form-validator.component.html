@@ -1,0 +1,6 @@
+<div *ngIf="form?.touched" class="mensagem__erro" >
+  <div *ngIf="form.errors?.required" >O preenchimento do campo é obrigatório</div>
+  <div *ngIf="form.errors?.minlength" >O campo deve conter pelo menos {{form.errors?.minlength.requiredLength }} caracteres </div>
+</div>
+
+

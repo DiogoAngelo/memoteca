@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from 'src/app/services/clientService';
-import { Thoughts } from 'src/app/shared/thoughts.model';
+import { Thoughts } from 'src/app/shared/models/thoughts.model';
 
 @Component({
   templateUrl: './list-thoughts.component.html',

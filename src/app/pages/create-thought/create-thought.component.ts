@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClientService } from 'src/app/services/clientService';
-import { Thoughts } from 'src/app/shared/thoughts.model';
+import { Thoughts } from 'src/app/shared/models/thoughts.model';
 
 @Component({
   selector: 'app-create-thought',
@@ -9,20 +10,38 @@ import { Thoughts } from 'src/app/shared/thoughts.model';
   styleUrls: ['./create-thought.component.scss'],
 })
 export class CreateThoughtComponent implements OnInit {
-  public thought: Thoughts = {
-    content: '',
-    author: '',
-    template: '',
-  };
+  public form!: FormGroup;
 
-  constructor(private clientService: ClientService, private router: Router) {}
+  constructor(
+    private clientService: ClientService,
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {}
 
-  ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      content: [
+        '',
+        [Validators.required, Validators.pattern(/(.|\s)*\S(.|\s)*/)],
+      ],
+      author: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.pattern(/(.|\s)*\S(.|\s)*/),
+        ],
+      ],
+      template: ['', Validators.required],
+    });
+  }
 
   public createThought() {
-    this.clientService.create(this.thought).subscribe(() => {
-      this.router.navigate(['/home']);
-    });
+    if (this.form.valid) {
+      this.clientService.create(this.form.value).subscribe(() => {
+        this.router.navigate(['/home']);
+      });
+    }
   }
 
   public cancel() {

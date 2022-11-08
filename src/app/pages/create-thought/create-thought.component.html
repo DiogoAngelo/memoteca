@@ -3,41 +3,34 @@
     <h2>Adicione um pensamento novo:</h2>
     <button class="botao"[routerLink]="['/']">Meu mural</button>
   </header>
-  <form #form="ngForm"  >
+  <form [formGroup]="form"  >
     <label for="pensamento">Pensamento</label>
     <input
+      formControlName="content"
       type="textarea"
       class="input"
       id="pensamento"
-      name="pensamento"
       placeholder="Digite o pensamento"
-      [(ngModel)]="thought.content"
-      #pensamento="ngModel"
-      required
     >
+    <base-form-validator [form]="form.controls.content"></base-form-validator>
     <label for="autoria">Autoria ou fonte</label>
     <input
+      formControlName="author"
       type="text"
       class="input"
       id="autoria"
-      name="autoria"
       placeholder="Digite a autoria ou fonte"
-      [(ngModel)]="thought.author"
-      #autor="ngModel"
-      required
     >
+   <base-form-validator [form]="form.controls.author" ></base-form-validator>
     <label for="modelo">Selecione o modelo do card:</label>
     <div class="container-radio">
       <div class="radio-modelo">
         <label for="modelo1">
           <input
+            formControlName="template"
             type="radio"
             id="modelo1"
             value="modelo1"
-            name="modelo-card"
-            [(ngModel)]="thought.template"
-            #template1="ngModel"
-            required
           >
           <div class="custom-radio">
             <span></span>
@@ -55,12 +48,10 @@
       <div class="radio-modelo">
         <label for="modelo2">
           <input
+            formControlName="template"
             type="radio"
             id="modelo2"
             value="modelo2"
-            name="modelo-card"
-            [(ngModel)]="thought.template"
-            #template2="ngModel"
           >
           <div class="custom-radio">
             <span></span>
@@ -78,12 +69,10 @@
       <div class="radio-modelo">
         <label for="modelo3">
           <input
+            formControlName="template"
             type="radio"
             id="modelo3"
             value="modelo3"
-            name="modelo-card"
-            [(ngModel)]="thought.template"
-            #template3="ngModel"
           >
           <div class="custom-radio">
             <span></span>
@@ -99,8 +88,9 @@
       </div>
     </div>
     <div class="acoes">
-      <button (click)="createThought()" class="botao" [disabled]="form.invalid" [class.invalid]="form.invalid"  >Salvar</button>
+      <button (click)="createThought()" class="botao" [disabled]="form.invalid" [class.botao__desabilitado]="form.invalid"  >Salvar</button>
       <button (click)="cancel()" class="botao">Cancelar</button>
     </div>
+    <base-form-validator></base-form-validator>
   </form>
 </section>
