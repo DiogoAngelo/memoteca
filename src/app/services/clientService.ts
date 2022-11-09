@@ -15,12 +15,16 @@ export class ClientService {
     return this.httpClient.post<Thoughts>(this.API, thoughts);
   }
 
-  public list(page: number): Observable<Thoughts[]> {
+  public list(page: number, filter: string): Observable<Thoughts[]> {
     const totalItemsPage = 9;
 
     let params = new HttpParams()
       .set('_page', page)
       .set('_limit', totalItemsPage);
+
+    if (filter.trim().length > 2) {
+      params = params.set('q', filter);
+    }
 
     return this.httpClient.get<Thoughts[]>(this.API, { params });
   }

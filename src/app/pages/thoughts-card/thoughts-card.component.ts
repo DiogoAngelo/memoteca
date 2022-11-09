@@ -9,12 +9,7 @@ import { Thoughts } from 'src/app/shared/models/thoughts.model';
 export class ThoughtsCardComponent {
   constructor() {}
 
-  @Input() public thoughts: Thoughts = {
-    id: '',
-    content: 'Once upon a time',
-    author: 'Unknown',
-    template: 'modelo1',
-  };
+  @Input() public thoughts!: Thoughts;
 
   public get cardsWidth(): string {
     if (this.thoughts.content?.length >= 256) {

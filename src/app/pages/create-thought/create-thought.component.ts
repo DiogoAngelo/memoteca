@@ -38,7 +38,7 @@ export class CreateThoughtComponent implements OnInit {
 
   public createThought() {
     if (this.form.valid) {
-      this.clientService.create(this.form.value).subscribe(() => {
+      this.clientService.create(this.form.value).subscribe((data) => {
         this.router.navigate(['/home']);
       });
     }
