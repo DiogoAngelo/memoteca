@@ -15,12 +15,20 @@ export class ClientService {
     return this.httpClient.post<Thoughts>(this.API, thoughts);
   }
 
-  public list(page: number, filter: string): Observable<Thoughts[]> {
+  public list(
+    page: number,
+    filter: string,
+    favorite?: boolean
+  ): Observable<Thoughts[]> {
     const totalItemsPage = 9;
 
     let params = new HttpParams()
       .set('_page', page)
       .set('_limit', totalItemsPage);
+
+    if (favorite) {
+      params = params.set('favorite', favorite);
+    }
 
     if (filter.trim().length > 2) {
       params = params.set('q', filter);

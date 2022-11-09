@@ -11,6 +11,7 @@ export class ListThoughtsComponent implements OnInit {
   public currentPage: number = 1;
   public hasMoreItems: boolean = true;
   public filter: string = '';
+  public canShowFavoriteItems: boolean = false;
 
   constructor(private clientService: ClientService) {}
 
@@ -37,5 +38,14 @@ export class ListThoughtsComponent implements OnInit {
     this.clientService.list(this.currentPage, this.filter).subscribe((data) => {
       this.thoughtsList = data;
     });
+  }
+
+  public listFavorite() {
+    this.canShowFavoriteItems = !this.canShowFavoriteItems;
+    this.clientService
+      .list(this.currentPage, this.filter, this.canShowFavoriteItems)
+      .subscribe((data) => {
+        this.thoughtsList = data;
+      });
   }
 }
