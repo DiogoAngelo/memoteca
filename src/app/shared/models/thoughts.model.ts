@@ -3,4 +3,5 @@ export interface Thoughts {
   content: string;
   author: string;
   template: string;
+  favorite: boolean;
 }

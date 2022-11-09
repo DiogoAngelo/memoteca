@@ -32,7 +32,8 @@ export class CreateThoughtComponent implements OnInit {
           Validators.pattern(/(.|\s)*\S(.|\s)*/),
         ],
       ],
-      template: ['', Validators.required],
+      template: ['modelo2', Validators.required],
+      favorite: [false],
     });
   }
 

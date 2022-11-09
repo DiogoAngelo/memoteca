@@ -34,10 +34,7 @@ export class ClientService {
   }
 
   public edit(thought: Thoughts): Observable<Thoughts> {
-    return this.httpClient.patch<Thoughts>(
-      `${this.API}/${thought.id}`,
-      thought
-    );
+    return this.httpClient.put<Thoughts>(`${this.API}/${thought.id}`, thought);
   }
 
   public getDataById(id: string): Observable<Thoughts> {

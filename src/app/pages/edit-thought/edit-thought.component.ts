@@ -34,6 +34,7 @@ export class EditThoughtComponent implements OnInit {
         ],
         template: [this.thought.template, [Validators.required]],
         id: [this.thought.id],
+        favorite: [this.thought.favorite],
       });
     });
   }
