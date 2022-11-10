@@ -1,4 +1,4 @@
-export interface Thoughts {
+export interface Thought {
   id?: string;
   content: string;
   author: string;

@@ -15,12 +15,15 @@
     <h2 class="ff-inter">Meu Mural</h2>
     <div class="botoes">
       <button routerLink="/home/create-thought" class="botao">Novo pensamento</button>
-      <button  (click)="listFavorite()" class="botao"> <span>{{canShowFavoriteItems ? 'Mostrar todos ' : 'Mostrar favoritos '}}</span></button>
+      <button  (click)="listFavorite()" class="botao"> <span>{{canShowFavoriteList ? 'Mostrar todos ' : 'Mostrar favoritos '}}</span></button>
     </div>
   </header>
   <div class="mural" *ngIf="thoughtsList.length > 0, else semPensamentos">
     <div *ngFor="let thought of thoughtsList">
-      <app-thoughts-card [thoughts]="thought" ></app-thoughts-card>
+      <app-thoughts-card
+        [favoriteList]="thoughtsList"
+        [thought]="thought"
+      ></app-thoughts-card>
     </div>
   </div>
 </section>

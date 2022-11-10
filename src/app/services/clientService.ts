@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Thoughts } from '../shared/models/thoughts.model';
+import { Thought } from '../shared/models/thought.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,15 +11,15 @@ export class ClientService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public create(thoughts: Thoughts): Observable<Thoughts> {
-    return this.httpClient.post<Thoughts>(this.API, thoughts);
+  public create(thoughts: Thought): Observable<Thought> {
+    return this.httpClient.post<Thought>(this.API, thoughts);
   }
 
   public list(
     page: number,
     filter: string,
     favorite?: boolean
-  ): Observable<Thoughts[]> {
+  ): Observable<Thought[]> {
     const totalItemsPage = 9;
 
     let params = new HttpParams()
@@ -34,18 +34,18 @@ export class ClientService {
       params = params.set('q', filter);
     }
 
-    return this.httpClient.get<Thoughts[]>(this.API, { params });
+    return this.httpClient.get<Thought[]>(this.API, { params });
   }
 
-  public delete(id: string): Observable<Thoughts> {
-    return this.httpClient.delete<Thoughts>(`${this.API}/${id}`);
+  public delete(id: string): Observable<Thought> {
+    return this.httpClient.delete<Thought>(`${this.API}/${id}`);
   }
 
-  public edit(thought: Thoughts): Observable<Thoughts> {
-    return this.httpClient.put<Thoughts>(`${this.API}/${thought.id}`, thought);
+  public edit(thought: Thought): Observable<Thought> {
+    return this.httpClient.put<Thought>(`${this.API}/${thought.id}`, thought);
   }
 
-  public getDataById(id: string): Observable<Thoughts> {
-    return this.httpClient.get<Thoughts>(`${this.API}/${id}`);
+  public getDataById(id: string): Observable<Thought> {
+    return this.httpClient.get<Thought>(`${this.API}/${id}`);
   }
 }

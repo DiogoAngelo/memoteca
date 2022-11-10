@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ClientService } from 'src/app/services/clientService';
-import { Thoughts } from 'src/app/shared/models/thoughts.model';
+import { Thought } from 'src/app/shared/models/thought.model';
 
 @Component({
   selector: 'app-thoughts-card',
@@ -10,24 +10,27 @@ import { Thoughts } from 'src/app/shared/models/thoughts.model';
 export class ThoughtsCardComponent {
   constructor(private clientService: ClientService) {}
 
-  @Input() public thoughts!: Thoughts;
+  @Input() public thought!: Thought;
+  @Input() public favoriteList: Thought[] = [];
 
   public get cardsWidth(): string {
-    if (this.thoughts.content?.length >= 256) {
+    if (this.thought.content?.length >= 256) {
       return 'pensamento-g';
     }
     return 'pensamento-p';
   }
 
   public get favoriteIcon() {
-    if (this.thoughts.favorite === false) {
+    if (this.thought.favorite === false) {
       return 'inativo';
     }
     return 'ativo';
   }
 
-  public toggleIcon() {
-    this.thoughts.favorite = !this.thoughts.favorite;
-    this.clientService.edit(this.thoughts).subscribe((data) => {});
+  public updateFavorite() {
+    this.thought.favorite = !this.thought.favorite;
+    this.clientService.edit(this.thought).subscribe(() => {
+      this.favoriteList.splice(this.favoriteList.indexOf(this.thought), 1);
+    });
   }
 }

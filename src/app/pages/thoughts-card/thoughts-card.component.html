@@ -1,15 +1,15 @@
-<div class="pensamento {{ thoughts.template }} ff-roboto-mono" [ngClass]="cardsWidth">
-  <img src="/assets/imagens/{{ thoughts.template }}.png" alt="Aspas coloridas">
-  <p class="conteudo">{{ thoughts.content }}</p>
-  <p class="autoria"><b>{{ thoughts.author }}</b></p>
+<div class="pensamento {{ thought.template }} ff-roboto-mono" [ngClass]="cardsWidth">
+  <img src="/assets/imagens/{{ thought.template }}.png" alt="Aspas coloridas">
+  <p class="conteudo">{{ thought.content }}</p>
+  <p class="autoria"><b>{{ thought.author }}</b></p>
   <div class="acoes">
     <button class="botao-favorito">
-      <img (click)="toggleIcon()"  src="assets/imagens/icone-favorito-{{favoriteIcon}}.png" alt="Heart icon">
+      <img (click)="updateFavorite()"  src="assets/imagens/icone-favorito-{{favoriteIcon}}.png" alt="Heart icon">
     </button>
     <button class="botao-editar">
-      <img src="/assets/imagens/icone-editar.png" routerLink="/home/edit-thought/{{thoughts.id}}" alt="Ícone de editar">
+      <img src="/assets/imagens/icone-editar.png" routerLink="/home/edit-thought/{{thought.id}}" alt="Ícone de editar">
     </button>
-    <button class="botao-excluir" routerLink="/home/delete-thought/{{thoughts.id}}">
+    <button class="botao-excluir" routerLink="/home/delete-thought/{{thought.id}}">
       <img src="/assets/imagens/icone-excluir.png" alt="Ícone de excluir">
     </button>
   </div>

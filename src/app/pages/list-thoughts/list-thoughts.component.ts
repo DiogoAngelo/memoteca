@@ -1,29 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from 'src/app/services/clientService';
-import { Thoughts } from 'src/app/shared/models/thoughts.model';
+import { Thought } from 'src/app/shared/models/thought.model';
 
 @Component({
   templateUrl: './list-thoughts.component.html',
   styleUrls: ['./list-thoughts.component.scss'],
 })
 export class ListThoughtsComponent implements OnInit {
-  public thoughtsList: Thoughts[] = [];
+  public thoughtsList: Thought[] = [];
   public currentPage: number = 1;
   public hasMoreItems: boolean = true;
   public filter: string = '';
-  public canShowFavoriteItems: boolean = false;
+  public canShowFavoriteList: boolean = false;
 
   constructor(private clientService: ClientService) {}
 
   public ngOnInit(): void {
-    this.clientService.list(this.currentPage, this.filter).subscribe((data) => {
-      this.thoughtsList = data;
-    });
+    this.clientService
+      .list(this.currentPage, this.filter, this.canShowFavoriteList)
+      .subscribe((data) => {
+        this.thoughtsList = data;
+      });
   }
 
   public loadMoreItems() {
     this.clientService
-      .list(++this.currentPage, this.filter)
+      .list(++this.currentPage, this.filter, this.canShowFavoriteList)
       .subscribe((data) => {
         this.thoughtsList.push(...data);
         if (!data.length) {
@@ -41,9 +43,9 @@ export class ListThoughtsComponent implements OnInit {
   }
 
   public listFavorite() {
-    this.canShowFavoriteItems = !this.canShowFavoriteItems;
+    this.canShowFavoriteList = !this.canShowFavoriteList;
     this.clientService
-      .list(this.currentPage, this.filter, this.canShowFavoriteItems)
+      .list(this.currentPage, this.filter, this.canShowFavoriteList)
       .subscribe((data) => {
         this.thoughtsList = data;
       });
