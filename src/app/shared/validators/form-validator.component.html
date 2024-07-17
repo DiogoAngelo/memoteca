@@ -1,0 +1,6 @@
+<div *ngIf="form?.touched" class="mensagem__erro" >
+  <div *ngIf="form.errors?.required" >This field is required</div>
+  <div *ngIf="form.errors?.minlength" >This field must have at least {{form.errors?.minlength.requiredLength }} characters </div>
+</div>
+
+

@@ -1,0 +1,107 @@
+<section class="container quote-edit ff-inter">
+  <header class="header">
+    <h2 class="form-title">{{ thought ? 'Edit your quote' : 'Add a new quote' }}</h2>
+  </header>
+
+  <form *ngIf="form" [formGroup]="form">
+
+    <!-- Content -->
+    <label for="quote-input">Quote</label>
+    <input
+      formControlName="content"
+      type="textarea"
+      class="input"
+      id="quote-input"
+      placeholder="Type your quote"
+    >
+    <base-form-validator [form]="form.controls.content" ></base-form-validator>
+
+    <!-- Author -->
+    <label for="author">Author</label>
+    <input
+      formControlName="author"
+      type="text"
+      class="input"
+      id="author"
+      placeholder="Type the author's name"
+    >
+    <base-form-validator [form]="form.controls.author" ></base-form-validator>
+
+    <!-- Templates -->
+    <label for="template">Choose a template</label>
+    <div class="container-radio">
+
+      <!-- Template 1 -->
+      <div class="radio-template">
+        <label for="template1">
+          <input
+          formControlName="template"
+            type="radio"
+            id="template1"
+            value="template1"
+          >
+          <div class="custom-radio">
+            <span class="radio-core" ></span>
+          </div>
+          <span class="template-title">Template 1</span>
+
+        <div class="template template1 ff-roboto-mono">
+          <img src="../../../../assets/imagens/template1.png" alt="Blue quotes">
+          <p class="quote-content">You must be the change you wish to see in the world</p>
+          <p class="author"><b>Mahatma Gandhi</b></p>
+        </div>
+      </label>
+      </div>
+
+      <!-- Template 2 -->
+      <div class="radio-template">
+        <label for="template2">
+          <input
+            formControlName="template"
+            type="radio"
+            id="template2"
+            value="template2"
+          >
+          <div class="custom-radio">
+            <span class="radio-core"></span>
+          </div>
+          <span class="template-title">Template 2</span>
+
+        <div class="template template2 ff-roboto-mono">
+          <img src="../../../../assets/imagens/template2.png" alt="Light blue quotes">
+          <p class="quote-content">Be yourself; everyone else is already taken</p>
+          <p class="author"><b>Oscar Wilde</b></p>
+        </div>
+      </label>
+      </div>
+
+      <!-- Template 3 -->
+      <div class="radio-template">
+        <label for="template3">
+          <input
+          formControlName="template"
+            type="radio"
+            id="template3"
+            value="template3"
+          >
+          <div class="custom-radio">
+            <span class="radio-core"></span>
+          </div>
+          <span class="template-title">Template 3</span>
+
+           <div class="template template3 ff-roboto-mono">
+             <img src="../../../../assets/imagens/template3.png" alt="Green quotes">
+             <p class="quote-content">In the end, it's not the years in your life that count. It's the life in your years.</p>
+             <p class="author"><b>Abraham Lincoln</b></p>
+          </div>
+      </label>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="button cancel" (click)="cancel()">Cancel</button>
+      <button [class.disabled__button]="form.invalid" class="button save" (click)="save()">Save</button>
+    </div>
+  </form>
+</section>
+

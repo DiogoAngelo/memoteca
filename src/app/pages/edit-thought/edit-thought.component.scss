@@ -1,0 +1,132 @@
+.quote-edit {
+  padding: 2rem 0;
+
+  .form-title {
+    margin-bottom: 1.5rem;
+  }
+
+  form {
+    background: #C4EDFF;
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+
+    label {
+      color: #154580;
+      font-weight: bold;
+      margin: 0 0 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input {
+      border: none;
+      height: 40px;
+      padding: 1rem 2rem;
+      border-radius: 20px;
+      margin: 0.5rem 0 2rem;
+    }
+
+    .textarea {
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 20px;
+      margin: 0.5rem 0 2rem;
+    }
+
+    .template-title {
+      margin-top: 8px;
+    }
+
+    .container-radio {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+
+      .radio-template label {
+        display: flex;
+        align-items: center;
+        column-gap: 20px;
+
+        input[type='radio'] {
+          display: none;
+        }
+
+        input[type='radio']:checked+.custom-radio {
+          border-color: #154580;
+        }
+
+        input[type='radio']:checked+.custom-radio span {
+          background: #154580;
+        }
+
+        .custom-radio {
+          border: 1px solid #154580;
+          width: 30px;
+          height: 30px;
+          display: grid;
+          place-content: center;
+          border-radius: 50%;
+
+          .radio-core {
+            content: '';
+            width: 18px;
+            height: 18px;
+            background: transparent;
+            border-radius: 50%;
+          }
+        }
+
+        .template {
+          background-color: #F8F9FE;
+          padding: 1rem;
+          max-width: 250px;
+          margin: 1rem 0 2rem;
+
+          &.template1 {
+            box-shadow: 8px 8px 0px;
+          }
+
+          &.template2 {
+            box-shadow: 8px 8px 0px #6BD1FF;
+          }
+
+          &.template3 {
+            box-shadow: 8px 8px 0px #84EEC1;
+          }
+
+          .quote-content {
+            margin: 1rem auto;
+            word-wrap: break-word;
+          }
+
+          .author {
+            word-wrap: break-word;
+          }
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+
+      .button {
+        margin: 5px;
+
+        &.cancel {
+          background-color: rgb(186, 185, 185);
+          border: none;
+
+          &:hover {
+            border: 1px solid rgb(29, 27, 27);
+            color: rgb(29, 27, 27);
+          }
+        }
+      }
+    }
+  }
+}
