@@ -7,4 +7,11 @@ You can add, edit, delete or set cards as favorites. There is also a search bar 
 ## API
 
 The API that supports this app can be found in this account, named memoteca-api. This is the repository where you can clone it from: git@github.com:DiogoAngelo/memoteca-backend.git
+Run the API with "npm run start" simultaneously with the app Memoteca.
+
+## Run
+
+First you should install dependencies by running "npm install".
+Then run the app with "ng serve" or "npm run start". You might need to use version 16 of npm in case run fails.
+You should also run the API Memoteca-api simultaneously to serve the app.
 
