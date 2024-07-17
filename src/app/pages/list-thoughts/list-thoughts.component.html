@@ -1,0 +1,41 @@
+
+<section class="container" [formGroup]="form">
+  <!-- Header -->
+  <header class="header">
+    <div class="search-wrapper">
+      <input
+      type="search"
+      class="filter"
+      placeholder="What are you looking for?"
+      autofocus
+      formControlName="filter"
+      >
+      <img src="/assets/imagens/lupa.png" alt="search">
+    </div>
+    <h2 class="ff-inter">My quotes</h2>
+
+    <div class="buttons">
+      <button routerLink="/home/create-thought" class="button">Add new quote</button>
+      <button  (click)="listFavorite()" class="button"> <span>{{canShowFavoriteList ? 'Show All' : 'Show favorite list'}}</span></button>
+    </div>
+  </header>
+
+<!-- Body -->
+  <div class="panel" *ngIf="thoughtsList.length > 0, else noQuotesToShow">
+    <div *ngFor="let thought of thoughtsList">
+      <app-thoughts-card
+        [thought]="thought"
+        (favoriteClick)="loadItems()"
+      ></app-thoughts-card>
+    </div>
+  </div>
+</section>
+
+<!-- Template section -->
+<ng-template #noQuotesToShow>
+  <div class="ff-inter no-quotes">
+    <p>{{ canShowFavoriteList ? 'Your favorite list is empty' : 'Your quotes list is empty' }}</p>
+  </div>
+</ng-template>
+
+

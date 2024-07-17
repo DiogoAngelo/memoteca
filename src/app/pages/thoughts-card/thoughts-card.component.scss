@@ -1,0 +1,57 @@
+.actions {
+  display: flex;
+  justify-content: flex-end
+}
+
+.edit-button, .delete-button, .favorite-button {
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+  margin-top: 15px;
+  background-color: #F8F9FE;
+}
+
+.quote-container {
+  background-color: #F8F9FE;
+  opacity: .7;
+  padding: 1rem;
+  box-sizing: border-box;
+  .content {
+    margin: 1rem auto;
+    word-wrap: break-word;
+  }
+  .author {
+    word-wrap: break-word;
+  }
+}
+
+.template1 {
+  box-shadow: 8px 8px 0px #154580;
+}
+
+.template2 {
+  box-shadow: 8px 8px 0px #6BD1FF;
+}
+
+.template3 {
+  box-shadow: 8px 8px 0px #84EEC1;
+}
+
+.quote-g {
+  width: 556px;
+}
+
+.quote-p {
+  width: 262px;
+}
+
+@media screen and (max-width: 768px) {
+  .quote-g {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 426px) {
+  .quote-p {
+    width: 100%;
+  }
+}

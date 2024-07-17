@@ -1,0 +1,21 @@
+<div class="quote-container {{ thought.template }} ff-roboto-mono" [ngClass]="cardsWidth">
+  <img src="/assets/imagens/{{ thought.template }}.png" alt="Double-quotes color">
+  <p class="content">{{ thought.content }}</p>
+  <p class="author"><b>{{ thought.author }}</b></p>
+
+  <!-- Actions -->
+  <div class="actions">
+
+    <button class="favorite-button">
+      <img (click)="updateFavorite()"  src="assets/imagens/icone-favorito-{{favoriteIcon}}.png" alt="Heart icon">
+    </button>
+
+    <button class="edit-button">
+      <img src="/assets/imagens/icone-editar.png" routerLink="/home/edit-thought/{{thought.id}}" alt="Edit icon">
+    </button>
+
+    <button class="delete-button" routerLink="/home/delete-thought/{{thought.id}}">
+      <img src="/assets/imagens/icone-excluir.png" alt="Delete icon">
+    </button>
+  </div>
+</div>
