@@ -7,12 +7,14 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { EditThoughtComponent } from './edit-thought/edit-thought.component';
 import { ThoughtsCardComponent } from './thoughts-card/thoughts-card.component';
 import { ListThoughtsComponent } from './list-thoughts/list-thoughts.component';
+import { DeleteThoughtComponent } from './delete-thoughts/delete-thought.component';
 
 @NgModule({
   declarations: [
     EditThoughtComponent,
     ThoughtsCardComponent,
     ListThoughtsComponent,
+    DeleteThoughtComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,11 @@ import { ListThoughtsComponent } from './list-thoughts/list-thoughts.component';
     ReactiveFormsModule,
     SharedModule,
   ],
-  exports: [EditThoughtComponent, ThoughtsCardComponent, ListThoughtsComponent],
+  exports: [
+    EditThoughtComponent,
+    ThoughtsCardComponent,
+    ListThoughtsComponent,
+    DeleteThoughtComponent,
+  ],
 })
 export class PagesModule {}
